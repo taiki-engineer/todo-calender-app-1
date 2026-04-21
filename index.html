@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="calender">
+            <div class="header">
+                <button id="prev"></button>
+                <h2 id="title"></h2>
+                <button id="next"></button>
+            </div>
+        
+
+            <div class="week">
+                <div class="sun">日</div>
+                <div>月</div>
+                <div>火</div>
+                <div>水</div>
+                <div>木</div>
+                <div>金</div>
+                <div class="sat">土</div>
+            </div>
+
+            <div id="dates" class="dates"></div>
+        </div>
+
+        <div class="todo">
+            <h2 id="selectedDate"></h2>
+
+            <div class="inputArea">
+                <input id="taskInput" placeholder="タスクを入力">
+                <button id="addBtn">追加</button>
+            </div>
+            <ul id="taskList"></ul>
+        </div>
+
+    </div>
+        
+
+    <script src="./main.js"></script>
+</body>
+</html>
