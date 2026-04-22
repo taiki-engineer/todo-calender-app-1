@@ -68,4 +68,49 @@ function renderCalender() {
 
 };
 
+function renderTasks() {
+    const list = document.getElementById("taskList");
+    list.innerHTML = "";
+
+    const filtered = memos.filter(m => m.date === selectedDate);
+
+    filtered.forEach((memo, index) => {
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            ${memo.text}
+            <button class="delete-btn" onclick="deleteTask(${index})">🗑️</button>
+        `;
+        list.appendChild(li);
+    });
+}
+
+document.getElementById("addBtn").addEventListener("click", () =>{
+    const input = document.getElementById("taskInput");
+
+    if (!selectedDate || input.value === "") return;
+    
+    memos.push({
+        date: selectedDate,
+        text: input.value
+    });
+
+    localStorage.setItem("memos", JSON.stringify(memos));
+
+    input.value = "";
+    renderTasks();
+});
+
+function deleteTask(index) {
+    const filtered = memos.filter(m => m.date === selectedDate);
+    const target = filtered[index];
+
+    memos = memos.filter(m => m !== target);
+
+    localStorage.setItem("memos", JSON.stringify(memos))
+    renderTasks();
+};
+
+renderCalender();
+
 renderCalender();
