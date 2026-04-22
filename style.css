@@ -63,3 +63,45 @@ body {
 .today {
     color: red;
 }
+
+
+.selectedDate {
+    background: #5ba7a4;
+    color: white;
+    border-radius: 50%;
+}
+
+/* 右 */
+.todo {
+    width: 50%;
+    padding: 20px;
+}
+
+.inputArea {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+button {
+    background: #5ba7a4;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+}
+
+.delete-btn {
+    background: white;
+}
+
+.nav-btn {
+    background: transparent;
+    color: white;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    
+}
