@@ -111,6 +111,17 @@ function deleteTask(index) {
     renderTasks();
 };
 
+document.getElementById("prev").addEventListener("click", () => {
+    current.setMonth(current.getMonth() -1);
+    renderCalender();
+});
+
+
+document.getElementById("next").addEventListener("click", () => {
+    current.setMonth(current.getMonth() +1);
+    renderCalender();
+});
+
 renderCalender();
 
 renderCalender();
