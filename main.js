@@ -1,6 +1,10 @@
 let current = new Date();
 let selectedDate = "";
 
+// let memos = JSON.parse(localStorage.getItem("memos")) || [];
+
+let memos = [];
+
 function renderCalender() {
     const year = current.getFullYear();
     const month = current.getMonth();
@@ -90,12 +94,36 @@ document.getElementById("addBtn").addEventListener("click", () =>{
 
     if (!selectedDate || input.value === "") return;
     
-    memos.push({
-        date: selectedDate,
-        text: input.value
-    });
+    // memos.push({
+    //     date: selectedDate,
+    //     text: input.value
+    // });
 
-    localStorage.setItem("memos", JSON.stringify(memos));
+    // localStorage.setItem("memos", JSON.stringify(memos));
+
+    const newMemos = {
+        text: input.value,
+        date: selectedDate
+    };
+
+    fetch("http://localhost:3000/task", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newMemos)
+    })
+    .then(() => {
+        fetch("http://localhost:3000/task")
+            .then(res => res.json())
+            .then(tasks =>{
+            memos = tasks;
+
+            console.log(tasks);
+
+            renderTasks();
+        });
+    });
 
     input.value = "";
     renderTasks();
