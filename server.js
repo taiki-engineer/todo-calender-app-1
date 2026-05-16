@@ -22,7 +22,12 @@ db.serialize(() => {
 });
 
 app.get("/task", (req, res) => {
-    res.json(memos);
+    db.all("SELECT * FROM memos", (err, rows) => {
+        if (err) {
+            return res.status(500).json({ error: err.message});
+        }
+        res.json(rows);
+    });
 });
 
 
